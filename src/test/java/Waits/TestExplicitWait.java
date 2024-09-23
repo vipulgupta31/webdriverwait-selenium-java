@@ -21,7 +21,7 @@ public class TestExplicitWait extends TestBase{
 		// Initialize WebDriverWait with a timeout of 10 seconds
 		WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		// Navigate to simple form demo page
+		// LambdaTest e-commerce website to check for dynamic loading elements
 		driver.get("https://ecommerce-playground.lambdatest.io/");
 		
 		try {
