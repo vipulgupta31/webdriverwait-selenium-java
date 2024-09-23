@@ -22,25 +22,23 @@ public class TestExplicitWait extends TestBase{
 		WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10));
 		
 		// Navigate to simple form demo page
-		driver.get("https://www.lambdatest.com/selenium-playground/simple-form-demo");
+		driver.get("https://ecommerce-playground.lambdatest.io/");
 		
 		try {
 			// ExpectedCondition to wait for element to be present : presenceOfElementLocated
-			WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("user-message")));
-			element.sendKeys("lambdatest");
+			WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("entry_217966")));
 			 
-			// ExpectedCondition to wait for element to be clickable : elementToBeClickable
-			element = wait.until(ExpectedConditions.elementToBeClickable(By.id("showInput")));
+			// ExpectedCondition to check if element is clickable and then click on it: elementToBeClickable
+			element = wait.until(ExpectedConditions.elementToBeClickable(By.id("entry_217966")));
 			element.click();
 			 
-			// ExpectedCondition to wait for element to be visible : visibilityOfElementLocated
-			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
-			System.out.println("Message : " + element.getText());
+			// ExpectedCondition to wait for element to be visible after the click: visibilityOfElementLocated
+			element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@title='iPod Touch']")));
 			
 			// ExpectedCondition to wait for all input type elements : visibilityOfAllElementsLocatedBy
-			// assert if the expected length of elements located is 3 
-			List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[contains(@placeholder,'Please enter')]")));
-			Assert.assertEquals(elements.size(), 3);
+			// assert if the expected length of elements located is 15 
+			List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@class='carousel-item active']")));
+			Assert.assertEquals(elements.size(), 15);
 			
 			status = "passed";
 		} catch (TimeoutException ex) 
